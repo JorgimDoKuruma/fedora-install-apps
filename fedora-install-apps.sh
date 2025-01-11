@@ -1,13 +1,13 @@
 #!/bin/bash
 
-sudo dnf update
+sudo dnf update -y
 
 # add repos
 sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 sudo dnf install rpmfusion-nonfree rpmfusion-nonfree-steam rpmfusion-nonfree-updates -y
 sudo dnf config-manager --enable fedora-cisco-openh264 -y
 
-sudo dnf update
+sudo dnf update -y
 
 # install virtualization
 sudo dnf group install --with-optional virtualization -y
@@ -19,15 +19,15 @@ sudo systemctl enable libvirtd
 sudo dnf install steam -y
 
 # fix problem with mesa drivers and game recording on steam
-sudo dnf swap ffmpeg-free ffmpeg --allowerasing
-sudo dnf update @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
-sudo dnf swap mesa-va-drivers mesa-va-drivers-freeworld
-sudo dnf swap mesa-vdpau-drivers mesa-vdpau-drivers-freeworld
-sudo dnf swap mesa-va-drivers.i686 mesa-va-drivers-freeworld.i686
-sudo dnf swap mesa-vdpau-drivers.i686 mesa-vdpau-drivers-freeworld.i686
+sudo dnf swap ffmpeg-free ffmpeg --allowerasing -y
+sudo dnf update @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin -y
+sudo dnf swap mesa-va-drivers mesa-va-drivers-freeworld -y
+sudo dnf swap mesa-vdpau-drivers mesa-vdpau-drivers-freeworld -y
+sudo dnf swap mesa-va-drivers.i686 mesa-va-drivers-freeworld.i686 -y
+sudo dnf swap mesa-vdpau-drivers.i686 mesa-vdpau-drivers-freeworld.i686 -y
 
 # install cooler control
-sudo dnf install dnf-plugins-core
+sudo dnf install dnf-plugins-core -y
 sudo dnf copr enable codifryed/CoolerControl
 sudo dnf install coolercontrol -y
 sudo systemctl enable --now coolercontrold
