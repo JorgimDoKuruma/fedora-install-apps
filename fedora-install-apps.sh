@@ -3,7 +3,7 @@
 sudo dnf update
 
 # add repos
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 sudo dnf install rpmfusion-nonfree rpmfusion-nonfree-steam rpmfusion-nonfree-updates -y
 sudo dnf config-manager --enable fedora-cisco-openh264 -y
 
